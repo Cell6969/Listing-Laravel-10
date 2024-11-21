@@ -177,10 +177,13 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Menu</li>
-            <li><a class="nav-link" href="{{route('admin.dashboard.index')}}"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
-            <li class="dropdown">
+            <li class="{{setSidebarActive(['admin.dashboard.index'])}}"><a class="nav-link"
+                                                                           href="{{route('admin.dashboard.index')}}"><i
+                        class="fas fa-home"></i> <span>Dashboard</span></a>
+            </li>
+            <li class="dropdown {{setSidebarActive(['admin.hero.index'])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Section</span></a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu {{setSidebarActive(['admin.hero.index'])}}">
                     <li><a class="nav-link" href="{{route('admin.hero.index')}}">Hero</a></li>
                 </ul>
             </li>
