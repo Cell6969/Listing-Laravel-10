@@ -28,4 +28,7 @@ Route::group([
         ->name('hero.index');
     Route::put('/hero', [\App\Http\Controllers\Admin\HeroController::class, 'update'])
         ->name('hero.update');
+
+    //    Category Routes
+    Route::resource('/category', \App\Http\Controllers\Admin\CategoryController::class);
 });

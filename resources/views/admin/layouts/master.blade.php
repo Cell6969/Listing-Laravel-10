@@ -15,8 +15,10 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset("admin/assets/css/style.css")}}">
     <link rel="stylesheet" href="{{asset("admin/assets/css/components.css")}}">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+</head>
+
 <body>
 <div id="app">
     <div class="main-wrapper main-wrapper-1">
@@ -44,6 +46,8 @@
 <script src="{{asset("admin/assets/modules/bootstrap/js/bootstrap.min.js")}}"></script>
 <script src="{{asset("admin/assets/modules/nicescroll/jquery.nicescroll.min.js")}}"></script>
 <script src="{{asset("admin/assets/js/stisla.js")}}"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- JS Libraies -->
 <script src="{{asset("admin/assets/modules/summernote/summernote-bs4.js")}}"></script>
@@ -57,9 +61,9 @@
 
 <script>
     @if($errors->any())
-        @foreach($errors->all() as $error)
-            toastr.error("{{$error}}")
-        @endforeach
+    @foreach($errors->all() as $error)
+    toastr.error("{{$error}}")
+    @endforeach
     @endif
 
     $.uploadPreview({

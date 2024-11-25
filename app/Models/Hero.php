@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- *
+ * 
  *
  * @property int $id
  * @property string $image
@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Hero whereSubTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Hero whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Hero whereUpdatedAt($value)
+ * @property string|null $background
+ * @method static \Illuminate\Database\Eloquent\Builder|Hero whereBackground($value)
  * @mixin \Eloquent
  */
 class Hero extends Model

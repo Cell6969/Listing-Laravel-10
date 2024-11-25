@@ -8,3 +8,8 @@ desc heroes;
 select * from heroes;
 
 delete from heroes;
+
+
+desc categories;
+
+select * from categories;
