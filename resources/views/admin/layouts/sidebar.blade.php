@@ -191,6 +191,7 @@
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-building"></i> <span>Listing</span></a>
                 <ul class="dropdown-menu">
                     <li><a class="nav-link" href="{{route('admin.category.index')}}">Category</a></li>
+                    <li><a class="nav-link" href="{{route('admin.location.index')}}">Location</a></li>
                 </ul>
             </li>
         </ul>

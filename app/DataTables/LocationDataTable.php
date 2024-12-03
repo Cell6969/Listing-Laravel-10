@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\Category;
+use App\Models\Location;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class CategoryDataTable extends DataTable
+class LocationDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -23,15 +23,9 @@ class CategoryDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $edit = '<a href="' . route('admin.category.edit', $query->id) . '" class="btn btn-primary"><i class="fas fa-edit"></i></a>';
-                $delete = '<a href="' . route('admin.category.destroy', $query->id) . '" class="delete-item btn btn-danger ml-2"><i class="fas fa-trash"></i></a>';
+                $edit = '<a href="' . route('admin.location.edit', $query->id) . '" class="btn btn-primary"><i class="fas fa-edit"></i></a>';
+                $delete = '<a href="' . route('admin.location.destroy', $query->id) . '" class="delete-item btn btn-danger ml-2"><i class="fas fa-trash"></i></a>';
                 return $edit . $delete;
-            })
-            ->addColumn('iconRender', function ($query) {
-                return '<img width=70 src="' . asset($query->icon) . '">';
-            })
-            ->addColumn('imageRender', function ($query) {
-                return '<img width=80 src="' . asset($query->image) . '">';
             })
             ->addColumn('show_at_home', function ($query) {
                 if ($query->show_at_home == 1) {
@@ -39,21 +33,22 @@ class CategoryDataTable extends DataTable
                 } else {
                     return '<span class="badge badge-danger">No</span>';
                 }
-            })->addColumn('status', function ($query) {
+            })
+            ->addColumn('status', function ($query) {
                 if ($query->status == 1) {
                     return '<span class="badge badge-success">Active</span>';
                 } else {
                     return '<span class="badge badge-danger">Inactive</span>';
                 }
             })
-            ->rawColumns(['iconRender', 'imageRender', 'show_at_home', 'status', 'action'])
-            ->setRowId('id');
+            ->setRowId('id')
+            ->rawColumns(['show_at_home', 'status', 'action']);
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Category $model): QueryBuilder
+    public function query(Location $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -64,20 +59,12 @@ class CategoryDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('category-table')
+            ->setTableId('location-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(1)
-            ->selectStyleSingle()
-            ->buttons([
-                Button::make('excel'),
-                Button::make('csv'),
-                Button::make('pdf'),
-                Button::make('print'),
-                Button::make('reset'),
-                Button::make('reload')
-            ]);
+            ->orderBy(0)
+            ->selectStyleSingle();
     }
 
     /**
@@ -88,14 +75,8 @@ class CategoryDataTable extends DataTable
         return [
             Column::make('id')->width(10),
             Column::make('name')->width(50),
-            Column::make('iconRender')->width(100)
-                ->title('Icon'),
-            Column::make('imageRender')->width(100)
-                ->title('Image'),
-            Column::make('show_at_home')->width(50)
-                ->title('Show at home'),
-            Column::make('status')->width(50)
-                ->title('Status'),
+            Column::make('show_at_home')->width(20),
+            Column::make('status')->width(20),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)
@@ -109,6 +90,6 @@ class CategoryDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Category_' . date('YmdHis');
+        return 'Location_' . date('YmdHis');
     }
 }

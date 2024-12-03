@@ -31,4 +31,7 @@ Route::group([
 
     //    Category Routes
     Route::resource('/category', \App\Http\Controllers\Admin\CategoryController::class);
+
+    //    Location Routes
+    Route::resource('/location', \App\Http\Controllers\Admin\LocationController::class);
 });

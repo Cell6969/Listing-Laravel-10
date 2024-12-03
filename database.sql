@@ -15,3 +15,5 @@ delete from heroes;
 desc categories;
 
 select * from categories;
+
+SELECT * FROM locations;
