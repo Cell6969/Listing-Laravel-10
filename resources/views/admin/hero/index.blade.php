@@ -37,8 +37,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Sub Title <span class="text-danger">*</span></label>
-                                    <textarea name="sub_title" id="" cols="30" rows="20" class="form-control">{{@$hero->sub_title}}
-                                    </textarea>
+                                    <textarea name="sub_title" id="" cols="30" rows="20" class="form-control">{{@$hero->sub_title}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Update</button>

@@ -1,3 +1,5 @@
+show TABLES;
+
 desc users;
 
 
